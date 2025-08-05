@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Weather Info </title>
+    <title>Weather Analysis </title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -43,3 +43,4 @@
     %>
 </body>
 </html>
+
