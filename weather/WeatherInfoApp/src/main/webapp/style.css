@@ -1,0 +1,141 @@
+/* === Gradient Animation for Background === */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* === Page Body Styling with Background Animation === */
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(-45deg, #6dd5ed, #2193b0, #6a11cb, #2575fc);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: #00ff80;
+  padding: 50px 20px;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* === Header === */
+h1 {
+  color: white;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* === Form Styling === */
+form {
+  background: #ffffffbb;
+  display: inline-flex;
+  gap: 12px;
+  padding: 18px 28px;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  backdrop-filter: blur(5px);
+}
+
+form input[type="text"] {
+  padding: 12px 16px;
+  font-size: 16px;
+  width: 240px;
+  border: 2px solid #74ebd5;
+  border-radius: 6px;
+  outline: none;
+}
+
+form input[type="submit"] {
+  padding: 12px 20px;
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form input[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+/* === Weather Result Container === */
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px 25px;
+  max-width: 420px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+/* === Weather Info Blocks === */
+.weather-detail {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.5s;
+}
+
+/* === Temperature Animation and Color Based on Data === */
+.weather-detail.temp {
+  animation: pulseTemp 3s infinite alternate;
+}
+
+/* Define custom color ranges using data-temp attribute */
+.weather-detail.temp[data-temp] {
+  --cold: #74b9ff;
+  --mild: #ffeaa7;
+  --hot: #ff7675;
+}
+
+/* Cold: 0–10 */
+.weather-detail.temp[data-temp]:is([data-temp="0"], [data-temp="1"], [data-temp="2"], [data-temp="3"],
+[data-temp="4"], [data-temp="5"], [data-temp="6"], [data-temp="7"], [data-temp="8"], [data-temp="9"], [data-temp="10"]) {
+  background-color: var(--cold);
+}
+
+/* Moderate: 11–25 */
+.weather-detail.temp[data-temp]:is([data-temp="11"], [data-temp="12"], [data-temp="13"], [data-temp="14"],
+[data-temp="15"], [data-temp="16"], [data-temp="17"], [data-temp="18"], [data-temp="19"], [data-temp="20"],
+[data-temp="21"], [data-temp="22"], [data-temp="23"], [data-temp="24"], [data-temp="25"]) {
+  background-color: var(--mild);
+}
+
+/* Hot: 26+ */
+.weather-detail.temp[data-temp]:is([data-temp="26"], [data-temp="27"], [data-temp="28"], [data-temp="29"],
+[data-temp="30"], [data-temp="31"], [data-temp="32"], [data-temp="33"], [data-temp="34"], [data-temp="35"],
+[data-temp="36"], [data-temp="37"], [data-temp="38"], [data-temp="39"], [data-temp="40"]) {
+  background-color: var(--hot);
+}
+
+/* Subtle pulse animation for .temp */
+@keyframes pulseTemp {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.12);
+    transform: scale(1.03);
+  }
+}
